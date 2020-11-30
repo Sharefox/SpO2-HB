@@ -11,7 +11,7 @@
    <h3 align="center">SpO2/HB measuring device</h3>
 
    <p align="center">
-
+     project_description
      <br />
      <a href="https://github.com/Sharefox/SpO2-HB"><strong>Explore the docs »</strong></a>
      <br />

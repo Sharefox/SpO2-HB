@@ -29,19 +29,7 @@
  <details open="open">
    <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
    <ol>
-     <li>
-       <a href="#about-the-project">About The Project</a>
-       <ul>
-         <li><a href="#built-with">Built With</a></li>
-       </ul>
-     </li>
-     <li>
-       <a href="#getting-started">Getting Started</a>
-       <ul>
-         <li><a href="#prerequisites">Prerequisites</a></li>
-         <li><a href="#installation">Installation</a></li>
-       </ul>
-     </li>
+     <li><a href="#about-the-project">About The Project</a></li>
      <li><a href="#usage">Usage</a></li>
      <li><a href="#roadmap">Roadmap</a></li>
      <li><a href="#contributing">Contributing</a></li>
@@ -62,11 +50,6 @@
  With this project we would like to make sure people have an option to measure their saturation at home when they have corona but are too healthy to stay in the hospital.
  In this way we hope to avoid the worst by noticing in time what's going on.
 
-### Built With
-
- * []()
- * []()
- * []()
 
 
 

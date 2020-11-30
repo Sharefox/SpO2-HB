@@ -92,7 +92,7 @@
  <!-- CONTACT -->
 ## Contact
 
- Sharefox - Glenn Adriaensens - glenn.adri@hotmail.com
+ Sharefox - Glenn Adriaensens - glenn.adri@hotmail.com <br />
  Liesjelotje98 - Lieselotte Verhulst - Hey lieselotte! Pls Add Email Here :3
 
  Project Link: [https://github.com/Sharefox/SpO2-HB](https://github.com/Sharefox/SpO2-HB)

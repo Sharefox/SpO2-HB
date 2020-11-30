@@ -1,6 +1,5 @@
 # SpO2/HB
 
- Practice Enterprise 2 Heartbeat and Oxygen saturation sensor with bluetooth functionality
 
  <br />
  <p align="center">
@@ -11,7 +10,7 @@
    <h3 align="center">SpO2/HB measuring device</h3>
 
    <p align="center">
-     project_description
+      Practice Enterprise 2 Heartbeat and Oxygen saturation sensor with Bluetooth functionality
      <br />
      <a href="https://github.com/Sharefox/SpO2-HB"><strong>Explore the docs »</strong></a>
      <br />
@@ -30,19 +29,7 @@
  <details open="open">
    <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
    <ol>
-     <li>
-       <a href="#about-the-project">About The Project</a>
-       <ul>
-         <li><a href="#built-with">Built With</a></li>
-       </ul>
-     </li>
-     <li>
-       <a href="#getting-started">Getting Started</a>
-       <ul>
-         <li><a href="#prerequisites">Prerequisites</a></li>
-         <li><a href="#installation">Installation</a></li>
-       </ul>
-     </li>
+     <li><a href="#about-the-project">About The Project</a></li>
      <li><a href="#usage">Usage</a></li>
      <li><a href="#roadmap">Roadmap</a></li>
      <li><a href="#contributing">Contributing</a></li>
@@ -55,51 +42,19 @@
 
 
  <!-- ABOUT THE PROJECT -->
- ## About The Project
+## About The Project
 
  [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
- Here's a blank template to get started:
- **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
- `Sharefox`, `SpO2-HB`, `twitter_handle`, `glenn.adri@hotmail.com`, `SpO2/HB measuring device`, `project_description`
+ With the covid19 virus it became apparent that there is a need for Home Monitoring. Doctors noted severe damage in patients' lungs, even when the patient had no symptoms. Also the oxygen saturation was shocking for most.
+ With this project we would like to make sure people have an option to measure their saturation at home when they have corona but are too healthy to stay in the hospital.
+ In this way we hope to avoid the worst by noticing in time what's going on.
 
-
- ### Built With
-
- * []()
- * []()
- * []()
-
-
-
- <!-- GETTING STARTED -->
- ## Getting Started
-
- To get a local copy up and running follow these simple steps.
-
- ### Prerequisites
-
- This is an example of how to list things you need to use the software and how to install them.
- * npm
-   ```sh
-   npm install npm@latest -g
-   ```
-
- ### Installation
-
- 1. Clone the repo
-    ```sh
-    git clone https://github.com/Sharefox/SpO2-HB.git
-    ```
- 2. Install NPM packages
-    ```sh
-    npm install
-    ```
 
 
 
  <!-- USAGE EXAMPLES -->
- ## Usage
+## Usage
 
  Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
@@ -108,14 +63,14 @@
 
 
  <!-- ROADMAP -->
- ## Roadmap
+## Roadmap
 
  See the [open issues](https://github.com/Sharefox/SpO2-HB/issues) for a list of proposed features (and known issues).
 
 
 
  <!-- CONTRIBUTING -->
- ## Contributing
+## Contributing
 
  Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -128,15 +83,16 @@
 
 
  <!-- LICENSE -->
- ## License
+## License
 
- Distributed under the MIT License. See `LICENSE` for more information.
+ Distributed under the GNU License. See `LICENSE` for more information.
 
 
 
  <!-- CONTACT -->
- ## Contact
+## Contact
 
- Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - glenn.adri@hotmail.com
+ Sharefox - Glenn Adriaensens - glenn.adri@hotmail.com <br />
+ Liesjelotje98 - Lieselotte Verhulst - Hey lieselotte! Pls Add Email Here :3
 
  Project Link: [https://github.com/Sharefox/SpO2-HB](https://github.com/Sharefox/SpO2-HB)

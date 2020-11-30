@@ -1,6 +1,5 @@
 # SpO2/HB
 
- Practice Enterprise 2 Heartbeat and Oxygen saturation sensor with Bluetooth functionality
 
  <br />
  <p align="center">
@@ -11,7 +10,7 @@
    <h3 align="center">SpO2/HB measuring device</h3>
 
    <p align="center">
-     project_description
+      Practice Enterprise 2 Heartbeat and Oxygen saturation sensor with Bluetooth functionality
      <br />
      <a href="https://github.com/Sharefox/SpO2-HB"><strong>Explore the docs »</strong></a>
      <br />
@@ -55,7 +54,7 @@
 
 
  <!-- ABOUT THE PROJECT -->
- ## About The Project
+## About The Project
 
  [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
@@ -63,7 +62,7 @@
  With this project we would like to make sure people have an option to measure their saturation at home when they have corona but are too healthy to stay in the hospital.
  In this way we hope to avoid the worst by noticing in time what's going on.
 
- ### Built With
+### Built With
 
  * []()
  * []()
@@ -72,7 +71,7 @@
 
 
  <!-- USAGE EXAMPLES -->
- ## Usage
+## Usage
 
  Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
@@ -81,14 +80,14 @@
 
 
  <!-- ROADMAP -->
- ## Roadmap
+## Roadmap
 
  See the [open issues](https://github.com/Sharefox/SpO2-HB/issues) for a list of proposed features (and known issues).
 
 
 
  <!-- CONTRIBUTING -->
- ## Contributing
+## Contributing
 
  Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -101,14 +100,14 @@
 
 
  <!-- LICENSE -->
- ## License
+## License
 
  Distributed under the GNU License. See `LICENSE` for more information.
 
 
 
  <!-- CONTACT -->
- ## Contact
+## Contact
 
  Sharefox - Glenn Adriaensens - glenn.adri@hotmail.com
  Liesjelotje98 - Lieselotte Verhulst - Hey lieselotte! Pls Add Email Here :3

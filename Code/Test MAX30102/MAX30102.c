@@ -1,111 +1,59 @@
-/*
- * Library for the MAX30102 SPO2 usage.
- *
- * Written by Lieselotte Verhulst
- *
- * Start 12/03/2021
- * end
- *
- */
-
 #include <MAX30102.h>
+#include <MAXCalc.h>
+
+
 I2C_HandleTypeDef hi2c1;
+uint32_t spo2;
+uint8_t validSPO2;
+uint32_t heartRate;
+uint8_t validHeartRate;
 
+uint8_t waarde = 0x00;
+uint8_t Reg_Size = 1;
+uint8_t Size = 1;
 
+uint8_t IR_MSB = 0x00;
+uint8_t R_MSB = 0x00;
+uint8_t IR_LSB = 0x00;
+uint8_t R_LSB = 0x00;
+uint32_t IR16[100];
+uint32_t R16[100];
 
-void setConfiguratie(uint8_t mode, uint8_t SampleRateSPO2,uint8_t LedPulseWidth, uint8_t LedCurrent  )
-{
-	/*
-	 * static const uint8_t MODE_SPO2_EN = 			0x03;
-	 * static const uint8_t SPO2_SR_400 = 		0x04;
-	 * static const uint8_t LED_PW_400 = 		0x01;
-	 * LedCurrent = 0x1F (zou default zijn???)
-	 * --> nu zou adc 14 bits zijn
-	 * */
-	uint8_t waarde;
-	uint8_t Reg_Size = 1;
-	uint8_t Size = 1;
+uint8_t bufferLength = 100;
+uint32_t redBuffer[100];
+uint32_t IRBuffer[100];
+int dataisNotAvailable = 0;
+void gnjgn()
+	{
+		for (int i=0; i < bufferLength; i++ )
+		{
+			while (dataisNotAvailable == 0)
+			{
+				// Blijven we in deze lus.
+			}
 
-	// Set Mode
-	waarde = bitmask(MAX30102_MODECONFIG, MODE_MASK,mode);
-	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_MODECONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+			HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_FIFODATAREG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+			IR_LSB = waarde;
+			HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_FIFODATAREG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+			IR_MSB = waarde;
+			HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_FIFODATAREG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+			R_LSB = waarde;
+			HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_FIFODATAREG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+			R_MSB = waarde;
 
-	// Set sample Rate
-	waarde = bitmask(MAX30102_SPO2CONFIG, SPO2_SR_MASK,SampleRateSPO2);
-	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_SPO2CONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+			IR16[i] = IR_MSB << 8 | IR_LSB;
+			R16[i]  = R_MSB  << 8 | R_LSB;
+		}
 
-	// Set Led Pulse Width
-	waarde = bitmask(MAX30102_SPO2CONFIG, LED_PW_MASK,LedPulseWidth);
-	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_SPO2CONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+		// Hier zouden we dan 100 samples in de µc moeten hebben.
+		// Met dit gaan we dan berekenen hoe we aan de signaal range komen.
 
-	// Set Led current
-	waarde = LedCurrent;
-	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_LEDCONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
-
-}
-
-/* Functions for the i2c usage */
-
-// Schrijf mode + temp_En naar MAX
-void StartSensor(uint8_t mode, uint8_t temp_en)
-{
-	/*
-	 * Schrijf naar MAX mode waarin we werken + temp_en
-	 *
-	 * */
-	uint8_t waarde;
-	uint8_t Reg_Size = 1;
-	uint8_t Size = 1;
-
-	waarde = bitmask(MAX30102_MODECONFIG, MODE_MASK,mode);
-	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_MODECONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
-
-	waarde = bitmask(MAX30102_MODECONFIG, TEMP_EN_MASK,temp_en);
-	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_MODECONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
-}
-
-// Temperatuur uitlezen functie (deze komt in een interrupt)
-
-float TempLezen()
-{
- // lees temperatuur uit
-  /* 2 registers uitlezen
-   * 1. De Temp_Integer (0x16 = 8 bits) (integer)
-   * 2. De Temp_fraction (0x17 = 4 bits (lsb) frac.
-   * Formule voor bij elkaar Tme = Tint + T frac;
-   *
-   * */
-	uint8_t TempINT = 0x00;
-	uint8_t TempFRAC = 0x00;
-	uint8_t Reg_Size = 1;
-	uint8_t Size = 1;
-	float TempMeting = 0;
-
-  HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_TEMPINT, Reg_Size, &TempINT, Size, HAL_MAX_DELAY);
-
-  HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_TEMPFRAC, Reg_Size, &TempFRAC, Size, HAL_MAX_DELAY);
-  // Door de data te lezen zou interrupt gecleard moeten zijn, is dit juist?
-  // Interrupt eens lezen? idk
-  TempMeting = (float)TempINT + ((float)TempFRAC * 0.0625);
-  return TempMeting; // return nog weghalen wegens interrupt, pointer?
-}
-
-
-uint8_t bitmask(uint8_t RegAdr,uint8_t mask, uint8_t waardeMeegvn){ //Naam functie nog veranderen
-	uint8_t originalContent;
-	uint8_t Reg_Size = 1;
-	uint8_t Size = 1;
-
-	HAL_I2C_Mem_Read(&hi2c1, MAX_adr, RegAdr, Reg_Size, &originalContent, Size, HAL_MAX_DELAY);
-	// Adres van Reg moet niet met pointer!
-
-	originalContent = originalContent & mask;
-
-	return  originalContent | waardeMeegvn;
-}
-
+		// calculate with 100 samples (in het geval van arduino was dit 4 sec)
+		maxim_heart_rate_and_oxygen_saturation(IR16, bufferLength, R16, &spo2, &validSPO2, &heartRate, &validHeartRate);
+		// De 4 laatste parameters moeten dan eigenlijk naar de lcd worden gestuurd.
+	}
 void ReadFifo(){
-	//MAX30102_FIFODATAREG = 0x05; is het register om uit te lezen
+
 	uint8_t waarde = 0x00;
 	uint8_t Reg_Size = 1;
 	uint8_t Size = 1;
@@ -114,17 +62,15 @@ void ReadFifo(){
 	uint8_t R_MSB = 0x00;
 	uint8_t IR_LSB = 0x00;
 	uint8_t R_LSB = 0x00;
-
-	uint16_t IR16;
-	uint16_t R16;
-
+	uint16_t IR16[63];
+	uint16_t R16[63];
 	HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_FIFOWRITEPTR, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
 	uint8_t FIFO_Write = waarde;
 	HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_FIFOREADPTR, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
 
 	uint8_t FIFO_Read = waarde;
 	uint8_t AvailableSamples = FIFO_Write - FIFO_Read;
-// Data uitlezen
+	// Data uitlezen
 	HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_FIFODATAREG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
 
 	for ( int i = 0; i < AvailableSamples; i++)
@@ -137,12 +83,10 @@ void ReadFifo(){
 		R_LSB = waarde;
 		HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_FIFODATAREG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
 		R_MSB = waarde;
+
+		IR16[i] = IR_MSB << 8 | IR_LSB;
+		R16[i]  = R_MSB  << 8 | R_LSB;
 	}
-
-	IR16 = IR_MSB << 8 | IR_LSB;
-	R16  = R_MSB  << 8 | R_LSB;
-// nog pointer maken van deze 2 waarden (deze waarde is nodig in SPO2CALC.C)
-
 }
 
 void ClearFifoEvery(){
@@ -156,61 +100,141 @@ void ClearFifoEvery(){
 	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_FIFOREADPTR, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
 	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_FIFODATAREG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
 }
+void setConfiguratie(uint8_t SampleAverage, uint8_t mode,uint8_t adc_range, uint8_t SampleRate,uint8_t ledPulseWidth, uint8_t LedAmp )
+{
+	uint8_t waarde;
+	uint8_t Reg_Size = 1;
+	uint8_t Size = 1;
+	uint8_t temp_en;
+	uint8_t FifoRollOver = FIFO_ROLLOVER_EN_DIS;
+	uint8_t FIFO_A_FULL_Value = 0x02;
 
+	if (mode  == MODE_SPO2_EN)
+	{
+		temp_en = TEMP_EN_EN;
+	}
+	else
+	{
+		temp_en = TEMP_EN_DIS;
+	}
+
+	// FIFO configuratie
+	waarde = bitmaskReg(MAX30102_FIFOCONFIG, SMP_AVE_MASK,SampleAverage);
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_FIFOCONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+
+	waarde = bitmaskReg(MAX30102_FIFOCONFIG, FIFO_ROLLOVER_EN_MASK,FifoRollOver);
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_FIFOCONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+
+	waarde = bitmaskReg(MAX30102_FIFOCONFIG, FIFO_A_FULL_MASK,FIFO_A_FULL_Value);
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_FIFOCONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+
+	//Mode configuratie
+	waarde = bitmaskReg(MAX30102_MODECONFIG, MODE_MASK,mode);
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_MODECONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+
+	// SPO2 configuratie
+	waarde = bitmaskReg(MAX30102_SPO2CONFIG, SPO2_ADC_RGE_MASK,adc_range);
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_SPO2CONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+
+	waarde = bitmaskReg(MAX30102_SPO2CONFIG, SPO2_SR_MASK,SampleRate);
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_SPO2CONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+
+	waarde = bitmaskReg(MAX30102_SPO2CONFIG, LED_PW_MASK,ledPulseWidth);
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_SPO2CONFIG, Reg_Size, &waarde, Size, HAL_MAX_DELAY);
+
+	// Led pulse amplitude
+	//waarde = LedAmp;
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_LED1_PULSAMP, Reg_Size, &LedAmp, Size, HAL_MAX_DELAY);
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_LED2_PULSAMP, Reg_Size, &LedAmp, Size, HAL_MAX_DELAY);
+
+	// Temp enable
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_TEMPCONFIG, Reg_Size, &temp_en, Size, HAL_MAX_DELAY);
+}
+void StartSensor()
+{
+	// Dit wordt aangeboden als de Interrupt van power ready op 1 staat.
+	// initialisatie van de sensor.
+
+	 ClearFifoEvery();
+	 setConfiguratie(SMP_AVE_8,MODE_SPO2_EN,SPO2_ADC_RGE_4096,SPO2_SR_400,LED_PW_118,0x7F);
+}
+void TempLezen()
+{
+	// lees temperatuur uit
+	uint8_t TempINT = 0x00;
+	uint8_t TempFRAC = 0x00;
+	uint8_t Reg_Size = 1;
+	uint8_t Size = 1;
+	float TempMeting;
+
+  HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_TEMPINT, Reg_Size, &TempINT, Size, HAL_MAX_DELAY);
+  HAL_I2C_Mem_Read(&hi2c1, MAX_adr, MAX30102_TEMPFRAC, Reg_Size, &TempFRAC, Size, HAL_MAX_DELAY);
+
+  TempMeting = (float)TempINT + ((float)TempFRAC * 0.0625);
+}
 void InterruptsSwitch()
 {
-	// Interupt is gegenereerd
-	/*
-	 * Hier moeten we dan kijken welke interrupt, m.a.w. register van interrupt uitlezen.
-	 * en dan met switchke zien welke waarden
-	 *
-	 * Interrupt is active low. Dus We moeten naar de 0 zoeken
+	/* Interrupt is generated
+	 * In register kijken welke interrupt.
 	 */
-	uint8_t mask = 0b11110001;
-	uint8_t WaardeIntReg = 0x00;
+
+	uint8_t maskA_Full = 0b10000000;
+	uint8_t maskNewFIFO_ready = 0b01000000;
+	uint8_t maskALC_OVF = 0b00100000;
+	uint8_t maskTemp_ready = 0b00000010;
+	uint8_t maskPwr_ready = 0b00000001;
+
+
+	uint8_t WaardeIntReg1 = 0x00;
+	uint8_t WaardeIntReg2 = 0x00;
+
 	uint8_t Reg_Size = 1;
 	uint8_t Size = 1;
 
-	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_INTSTAT, Reg_Size, &WaardeIntReg, Size, HAL_MAX_DELAY);
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_INTSTAT1, Reg_Size, &WaardeIntReg1, Size, HAL_MAX_DELAY);
+	HAL_I2C_Mem_Write(&hi2c1, MAX_adr, MAX30102_INTSTAT2, Reg_Size, &WaardeIntReg2, Size, HAL_MAX_DELAY);
 
-	// We moeten uit deze waarde nog de default pinnen halen, die altijd op 0 staan
-	// mss nog masken?
+	if ((WaardeIntReg1 & maskA_Full) == maskA_Full)
+	{
+		// Fifo almost full
+		// Deze waarde wanneer deze triggered kan ik aanpassen in het FIFO_A_FULL[3:0]
+		// interrupt cleared als register wordt gelezen
+	}
+	if ((WaardeIntReg1 & maskNewFIFO_ready) == maskNewFIFO_ready)
+	{
+		// New FIFO Data Ready
+		// INT cleared als register INT of FIFO data wordt gelezen
+		ReadFifo();
+	}
+	if ((WaardeIntReg1 & maskALC_OVF) == maskALC_OVF)
+	{
+		// Interrupt triggers when ambient light cancellation has reached its maximum
+		// ambient ligth is affecting output of ADC
+		// interrupt cleared door ITN register te lezen
+	}
+	if ((WaardeIntReg1 & maskPwr_ready) == maskPwr_ready)
+	{
+		// Power Ready Flag
+		// module is klaar om gepowered te worden en data te collecteren
+		StartSensor();
 
-	WaardeIntReg = WaardeIntReg & mask;
-
-	switch(WaardeIntReg)
-	    {
-				case 0b10000000 :
-
-					// Fifo Almost full, FIFO wr ptr = FIFO read ptr -1
-					// Lees FIFO direct
-					ReadFifo(); // de waarden hier uit moeten nog ergens komen
-
-					break;
-				case 0b01000000 :
-					// Temperature ready  --> Lees temperatuur register uit
-					TempLezen(); // De waarde dat hier uitkomt moet ook nog ergens naartoe
-					break;
-				case 0b00100000:
-					// Heart rate data ready
-					// Na elke data sample, heart rate sample is 1 IR data punt
-					// Dit wordt sowieso gecleared als de FIFO wordt gelezen
-					// Kan het dan zijn dat deze ook aan staat met anderen interrupt???
-					break;
-				case 0b00010000:
-					// SPO2 data ready
-					// Na elke data sample = 1 IR en 1 RED data punt
-					break;
-				case 0b00000001:
-					// Power ready flag
-					// om aan te geven dat de IC powered is en kan data collecteren.
-					// Ik zou hier de start lus beginnen.
-					break;
-				case 0b00000000:
-					// niks doen, geen enkele interrupt hoog
-					break;
-	    }
+	}
+	if ((WaardeIntReg2 & maskTemp_ready) == maskTemp_ready)
+	{
+		// interrupt zodat temperatuur kan gelezen worden
+		// Wordt gecleared door TFRAC register te lezen of INT te lezen.
+		TempLezen();
+	}
 }
+uint8_t bitmaskReg(uint8_t RegAdr,uint8_t mask, uint8_t waardeMeegvn){ //Naam functie nog veranderen
+	uint8_t originalContent;
+	uint8_t Reg_Size = 1;
+	uint8_t Size = 1;
 
+	HAL_I2C_Mem_Read(&hi2c1, MAX_adr, RegAdr, Reg_Size, &originalContent, Size, HAL_MAX_DELAY);
+	// Adres van Reg moet niet met pointer!
 
+	originalContent = originalContent & mask;
 
+	return  originalContent | waardeMeegvn;
+}

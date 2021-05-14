@@ -1,6 +1,8 @@
 /*
  * Deze code is overgenomen van een library
  * Deze moet nog geimplementeerd worden in onze code
+ * Aangepast door Lieselotte Verhulst
+ * 2021-05-09
  * */
 /**
 * \brief        Calculate the heart rate and SpO2 level
@@ -19,12 +21,13 @@
 *
 * \retval       None
 */
+
 #define FreqS 25    //sampling frequency
 #define BUFFER_SIZE (FreqS * 4)
 #define MA4_SIZE 4 // DONOT CHANGE
 
-#include <string.h>
-#include <stdio.h>
+#include <MAX30102.h>
+
 //uch_spo2_table is approximated as  -45.060*ratioAverage* ratioAverage + 30.354 *ratioAverage + 94.845 ;
 const uint8_t uch_spo2_table[184]={ 95, 95, 95, 96, 96, 96, 97, 97, 97, 97, 97, 98, 98, 98, 98, 98, 99, 99, 99, 99,
               99, 99, 99, 99, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
@@ -36,28 +39,25 @@ const uint8_t uch_spo2_table[184]={ 95, 95, 95, 96, 96, 96, 97, 97, 97, 97, 97, 
               49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 31, 30, 29,
               28, 27, 26, 25, 23, 22, 21, 20, 19, 17, 16, 15, 14, 12, 11, 10, 9, 7, 6, 5,
               3, 2, 1 } ;
-static  int32_t an_x[ BUFFER_SIZE]; //ir
-static  int32_t an_y[ BUFFER_SIZE]; //red
+static  uint32_t an_x[ BUFFER_SIZE]; //ir
+static  uint32_t an_y[ BUFFER_SIZE]; //red
 
-
-
-void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer, int32_t n_ir_buffer_length, uint32_t *pun_red_buffer, float *pn_spo2, int8_t *pch_spo2_valid,
-                int32_t *pn_heart_rate, int8_t *pch_hr_valid)
+void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer, uint32_t n_ir_buffer_length, uint32_t *pun_red_buffer, uint32_t *pn_spo2, uint8_t *pch_spo2_valid, uint32_t *pn_heart_rate, uint8_t *pch_hr_valid)
 {
   uint32_t un_ir_mean;
-  int32_t k, n_i_ratio_count;
-  int32_t i, n_exact_ir_valley_locs_count, n_middle_idx;
-  int32_t n_th1, n_npks;
-  int32_t an_ir_valley_locs[15] ;
-  int32_t n_peak_interval_sum;
+  uint32_t k, n_i_ratio_count;
+  uint32_t i, n_exact_ir_valley_locs_count, n_middle_idx;
+  uint32_t n_th1, n_npks;
+  uint32_t an_ir_valley_locs[15] ;
+  uint32_t n_peak_interval_sum;
 
-  int32_t n_y_ac, n_x_ac;
-  int32_t n_spo2_calc;
-  int32_t n_y_dc_max, n_x_dc_max;
-  int32_t n_y_dc_max_idx = 0;
-  int32_t n_x_dc_max_idx = 0;
-  int32_t an_ratio[5], n_ratio_average;
-  int32_t n_nume, n_denom ;
+  uint32_t n_y_ac, n_x_ac;
+  uint32_t n_spo2_calc;
+  uint32_t n_y_dc_max, n_x_dc_max;
+  uint32_t n_y_dc_max_idx = 0;
+  uint32_t n_x_dc_max_idx = 0;
+  uint32_t an_ratio[5], n_ratio_average;
+  uint32_t n_nume, n_denom ;
 
   // calculates DC mean and subtract DC from ir
   un_ir_mean =0;
@@ -164,7 +164,7 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer, int32_t n_i
 }
 
 
-void maxim_find_peaks( int32_t *pn_locs, int32_t *n_npks,  int32_t  *pn_x, int32_t n_size, int32_t n_min_height, int32_t n_min_distance, int32_t n_max_num )
+void maxim_find_peaks( uint32_t *pn_locs, uint32_t *n_npks,  uint32_t  *pn_x, uint32_t n_size, uint32_t n_min_height, uint32_t n_min_distance, uint32_t n_max_num )
 /**
 * \brief        Find peaks
 * \par          Details
@@ -175,10 +175,10 @@ void maxim_find_peaks( int32_t *pn_locs, int32_t *n_npks,  int32_t  *pn_x, int32
 {
   maxim_peaks_above_min_height( pn_locs, n_npks, pn_x, n_size, n_min_height );
   maxim_remove_close_peaks( pn_locs, n_npks, pn_x, n_min_distance );
-  *n_npks = min( *n_npks, n_max_num );
+  *n_npks = min( *n_npks, n_max_num ); // returned de kleinste waarden van de 2, dit nog veranderen
 }
 
-void maxim_peaks_above_min_height( int32_t *pn_locs, int32_t *n_npks,  int32_t  *pn_x, int32_t n_size, int32_t n_min_height )
+void maxim_peaks_above_min_height( uint32_t *pn_locs, uint32_t *n_npks,  uint32_t  *pn_x, uint32_t n_size, uint32_t n_min_height )
 /**
 * \brief        Find peaks above n_min_height
 * \par          Details
@@ -208,7 +208,7 @@ void maxim_peaks_above_min_height( int32_t *pn_locs, int32_t *n_npks,  int32_t  
   }
 }
 
-void maxim_remove_close_peaks(int32_t *pn_locs, int32_t *pn_npks, int32_t *pn_x, int32_t n_min_distance)
+void maxim_remove_close_peaks(uint32_t *pn_locs, uint32_t *pn_npks, uint32_t *pn_x, uint32_t n_min_distance)
 /**
 * \brief        Remove peaks
 * \par          Details
@@ -237,7 +237,7 @@ void maxim_remove_close_peaks(int32_t *pn_locs, int32_t *pn_npks, int32_t *pn_x,
   maxim_sort_ascend( pn_locs, *pn_npks );
 }
 
-void maxim_sort_ascend(int32_t  *pn_x, int32_t n_size)
+void maxim_sort_ascend(uint32_t  *pn_x, uint32_t n_size)
 /**
 * \brief        Sort array
 * \par          Details
@@ -255,7 +255,7 @@ void maxim_sort_ascend(int32_t  *pn_x, int32_t n_size)
   }
 }
 
-void maxim_sort_indices_descend(  int32_t  *pn_x, int32_t *pn_indx, int32_t n_size)
+void maxim_sort_indices_descend(uint32_t  *pn_x, uint32_t *pn_indx, uint32_t n_size)
 /**
 * \brief        Sort indices
 * \par          Details
@@ -272,7 +272,3 @@ void maxim_sort_indices_descend(  int32_t  *pn_x, int32_t *pn_indx, int32_t n_si
     pn_indx[j] = n_temp;
   }
 }
-
-
-
-

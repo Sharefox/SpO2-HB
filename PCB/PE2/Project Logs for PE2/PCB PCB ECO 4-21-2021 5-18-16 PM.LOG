@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=OSC_OUT Pin=Y2-3
+Change Component Footprint: Designator=P5 Old Footprint=MHDR1X5 New Footprint=HDR1X5

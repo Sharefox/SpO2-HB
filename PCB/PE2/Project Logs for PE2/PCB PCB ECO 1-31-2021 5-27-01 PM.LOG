@@ -1,0 +1,88 @@
+Removed Pin From Net: NetName=USBSTM_N Pin=U6-37
+Removed Pin From Net: NetName=USBSTM_P Pin=U6-38
+Removed Pin From Net: NetName=DCPWROK Pin=U6-39
+Removed Pin From Net: NetName=FAULTOUT Pin=U6-41
+Removed Pin From Net: NetName=CHARGEINDICATOR Pin=U6-42
+Change Component Comment : Designator=C12 Old Comment=Cap New Comment=1uF
+Change Component Comment : Designator=C13 Old Comment=Cap New Comment=1uF
+Change Component Comment : Designator=C16 Old Comment=Cap New Comment=1uF
+Change Component Comment : Designator=C17 Old Comment=Cap New Comment=1uF
+Change Component Comment : Designator=P4 Old Comment=Comment New Comment=BAT
+Change Component Comment : Designator=P7 Old Comment=Comment New Comment=BAT
+Change Component Comment : Designator=P8 Old Comment=Comment New Comment=MHDR1X9
+Change Component Comment : Designator=P9 Old Comment=Comment New Comment=MHDR1X9
+Change Component Comment : Designator=P2 Old Comment=Comment New Comment=PWR
+Change Component Comment : Designator=P3 Old Comment=Comment New Comment=UART
+Change Component Comment : Designator=P6 Old Comment=Comment New Comment=UART
+Change Component Comment : Designator=P5 Old Comment=MHDR1X5 New Comment=Programmer
+Change component parameters: Designator = "P2" ("P2"); Footprint = "MHDR1X2"; UniqueID = "\DUEVEULL\KIJZMGAW" ("\DUEVEULL\KIJZMGAW")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P3" ("P3"); Footprint = "MHDR1X2"; UniqueID = "\DUEVEULL\CPWPJSCD" ("\DUEVEULL\CPWPJSCD")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P4" ("P4"); Footprint = "MHDR1X3"; UniqueID = "\DUEVEULL\CKTNVHOH" ("\DUEVEULL\CKTNVHOH")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P6" ("P6"); Footprint = "MHDR1X2"; UniqueID = "\NIBKEYUS\IKZAATMN" ("\NIBKEYUS\IKZAATMN")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P7" ("P7"); Footprint = "MHDR1X3"; UniqueID = "\NIBKEYUS\XOVMCDJJ" ("\NIBKEYUS\XOVMCDJJ")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P8" ("P8"); Footprint = "MHDR1X9"; UniqueID = "\NIBKEYUS\PBUUJVXJ" ("\NIBKEYUS\PBUUJVXJ")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Change component parameters: Designator = "P9" ("P9"); Footprint = "MHDR1X9"; UniqueID = "\VPCMQNOI\CGAHGYNM" ("\VPCMQNOI\CGAHGYNM")
+Change component parameters (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+3V3 Pin=P2-1
+Added Pin To Net: NetName=GND Pin=P2-2
+Added Pin To Net: NetName=USBSTM_N Pin=P3-1
+Added Pin To Net: NetName=USBSTM_P Pin=P3-2
+Added Pin To Net: NetName=DCPWROK Pin=P4-1
+Added Pin To Net: NetName=FAULTOUT Pin=P4-2
+Added Pin To Net: NetName=CHARGEINDICATOR Pin=P4-3
+Added Pin To Net: NetName=30100_nINT Pin=P9-1
+Added Pin To Net: NetName=30100_nINT Pin=R14-1
+Added Pin To Net: NetName=30100_nINT Pin=U7-9
+Added Net: Name=30100_nINT
+Added Pin To Net: NetName=DISPLAY_RESET Pin=P8-4
+Added Pin To Net: NetName=DISPLAY_RESET Pin=U6-14
+Added Net: Name=DISPLAY_RESET
+Added Pin To Net: NetName=DISPLAY_RS Pin=P9-3
+Added Pin To Net: NetName=DISPLAY_RS Pin=U7-3
+Added Net: Name=DISPLAY_RS
+Added Pin To Net: NetName=I2C1_SCL Pin=P8-8
+Added Pin To Net: NetName=I2C1_SCL Pin=U6-5
+Added Net: Name=I2C1_SCL
+Added Pin To Net: NetName=I2C1_SDA Pin=P9-9
+Added Pin To Net: NetName=I2C1_SDA Pin=R13-1
+Added Pin To Net: NetName=I2C1_SDA Pin=U7-8
+Added Net: Name=I2C1_SDA
+Added Pin To Net: NetName=SPI1_MOSI Pin=P9-6
+Added Pin To Net: NetName=SPI1_MOSI Pin=U7-4
+Added Net: Name=SPI1_MOSI
+Added Pin To Net: NetName=SPI1_NSS Pin=P9-5
+Added Pin To Net: NetName=SPI1_NSS Pin=U7-6
+Added Net: Name=SPI1_NSS
+Added Pin To Net: NetName=SPI1_SCK Pin=P9-2
+Added Pin To Net: NetName=SPI1_SCK Pin=U7-5
+Added Net: Name=SPI1_SCK
+Added Pin To Net: NetName=USER_BTN Pin=P8-7
+Added Pin To Net: NetName=USER_BTN Pin=U6-29
+Added Net: Name=USER_BTN
+Added Member To Class: ClassName=U_Power Member=Component P2 PWR
+Added Member To Class: ClassName=U_Power Member=Component P3 UART
+Added Member To Class: ClassName=U_Power Member=Component P4 BAT
+Added Member To Class: ClassName=U_STM32WB55 Member=Component P5 Programmer
+Added Member To Class: ClassName=U_STM32WB55 Member=Component P7 BAT
+Added Member To Class: ClassName=U_STM32WB55 Member=Component P8 MHDR1X9
+Added Member To Class: ClassName=U_IO Member=Component P9 MHDR1X9

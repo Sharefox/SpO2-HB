@@ -1,0 +1,7 @@
+Added Component: Designator=FLT1(LFB182G45BG4D268)
+Added Pin To Net: NetName=NetC20_2 Pin=FLT1-1
+Added Pin To Net: NetName=GND Pin=FLT1-2
+Added Pin To Net: NetName=NetC21_2 Pin=FLT1-3
+Added Pin To Net: NetName=NetC21_2 Pin=FLT1-4
+Added Pin To Net: NetName=GND Pin=FLT1-5
+Added Member To Class: ClassName=U_STM32WB55 Member=Component FLT1 LFB182G45BG4D268

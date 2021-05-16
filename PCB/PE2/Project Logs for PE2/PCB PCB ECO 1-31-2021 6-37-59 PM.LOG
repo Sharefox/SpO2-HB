@@ -1,0 +1,4 @@
+Change Net Name : Old Net Name=USB_IN_N New Net Name=USBIN_N
+Change Net Name : Old Net Name=USB_IN_P New Net Name=USBIN_P
+Added Differential Pair: Name=USBIN
+Added Member To Class: ClassName=U_STM32WB55 Member=Component U6 STM32WB55Cx

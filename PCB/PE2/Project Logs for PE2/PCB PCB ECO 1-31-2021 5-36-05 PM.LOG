@@ -1,0 +1,53 @@
+Change Net Name : Old Net Name=DISPLAY_RESET New Net Name=DISPLAY_RESET_STM
+Change Net Name : Old Net Name=I2C1_SCL New Net Name=I2C1_SCL_STM
+Change Net Name : Old Net Name=USART1_RX New Net Name=USART1_RX_STM
+Change Net Name : Old Net Name=USART1_TX New Net Name=USART1_TX_STM
+Change Net Name : Old Net Name=USB_N New Net Name=USB_IN_N
+Change Net Name : Old Net Name=USB_P New Net Name=USB_IN_P
+Change Net Name : Old Net Name=USBSTM_N New Net Name=USB_N
+Change Net Name : Old Net Name=USBSTM_P New Net Name=USB_P
+Change Net Name : Old Net Name=USER_BTN New Net Name=USER_BTN_STM
+Added Pin To Net: NetName=30100_nINT_STM Pin=P8-1
+Added Pin To Net: NetName=30100_nINT_STM Pin=U6-9
+Added Net: Name=30100_nINT_STM
+Added Pin To Net: NetName=CHARGEINDICATOR_STM Pin=P7-3
+Added Pin To Net: NetName=CHARGEINDICATOR_STM Pin=U6-42
+Added Net: Name=CHARGEINDICATOR_STM
+Added Pin To Net: NetName=DCPWROK_STM Pin=P7-1
+Added Pin To Net: NetName=DCPWROK_STM Pin=U6-39
+Added Net: Name=DCPWROK_STM
+Added Pin To Net: NetName=DISPLAY_RESET Pin=P9-4
+Added Pin To Net: NetName=DISPLAY_RESET Pin=U7-1
+Added Net: Name=DISPLAY_RESET
+Added Pin To Net: NetName=DISPLAY_RS_STM Pin=P8-3
+Added Pin To Net: NetName=DISPLAY_RS_STM Pin=U6-13
+Added Net: Name=DISPLAY_RS_STM
+Added Pin To Net: NetName=FAULTOUT_STM Pin=P7-2
+Added Pin To Net: NetName=FAULTOUT_STM Pin=U6-41
+Added Net: Name=FAULTOUT_STM
+Added Pin To Net: NetName=I2C1_SCL Pin=P9-8
+Added Pin To Net: NetName=I2C1_SCL Pin=R12-1
+Added Pin To Net: NetName=I2C1_SCL Pin=U7-7
+Added Net: Name=I2C1_SCL
+Added Pin To Net: NetName=I2C1_SDA_STM Pin=P8-9
+Added Pin To Net: NetName=I2C1_SDA_STM Pin=U6-6
+Added Net: Name=I2C1_SDA_STM
+Added Pin To Net: NetName=SPI1_MOSI_STM Pin=P8-6
+Added Pin To Net: NetName=SPI1_MOSI_STM Pin=U6-16
+Added Net: Name=SPI1_MOSI_STM
+Added Pin To Net: NetName=SPI1_NSS_STM Pin=P8-5
+Added Pin To Net: NetName=SPI1_NSS_STM Pin=U6-15
+Added Net: Name=SPI1_NSS_STM
+Added Pin To Net: NetName=SPI1_SCK_STM Pin=P8-2
+Added Pin To Net: NetName=SPI1_SCK_STM Pin=U6-10
+Added Net: Name=SPI1_SCK_STM
+Added Pin To Net: NetName=USBSTM_N Pin=P6-1
+Added Pin To Net: NetName=USBSTM_N Pin=U6-37
+Added Net: Name=USBSTM_N
+Added Pin To Net: NetName=USBSTM_P Pin=P6-2
+Added Pin To Net: NetName=USBSTM_P Pin=U6-38
+Added Net: Name=USBSTM_P
+Added Pin To Net: NetName=USER_BTN Pin=P9-7
+Added Pin To Net: NetName=USER_BTN Pin=S2-1
+Added Net: Name=USER_BTN
+Added Differential Pair: Name=USB_IN

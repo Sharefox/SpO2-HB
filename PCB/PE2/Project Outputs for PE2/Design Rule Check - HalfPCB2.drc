@@ -1,0 +1,92 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc
+Date     : 4/21/2021
+Time     : 5:02:35 PM
+
+Processing Rule : Clearance Constraint (Gap=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.127mm) (Max=2mm) (Preferred=0.254mm) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.127mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=6.3mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.5mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=0.02mm) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+Rule Violations :0
+
+Processing Rule : Room U_Power (Bounding Region = (26.924mm, 100.33mm, 73.025mm, 127mm) (InComponentClass('U_Power'))
+Rule Violations :0
+
+Processing Rule : Room U_IO (Bounding Region = (27.686mm, 102.235mm, 74.295mm, 119.634mm) (InComponentClass('U_IO'))
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+Waived Violations Of Rule : Clearance Constraint (Gap=0.254mm) (All),(All)
+   Waived Violation between Clearance Constraint: (Collision < 0.127mm) Between Pad U4-1(59.221mm,108.206mm) on Top Layer And Region (0 hole(s)) Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:51:49 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.127mm) Between Pad U4-3(59.871mm,109.286mm) on Top Layer And Region (0 hole(s)) Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:51:18 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.127mm) Between Pad U4-4(59.221mm,109.286mm) on Top Layer And Region (0 hole(s)) Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:51:31 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.127mm) Between Pad U5-1(64.983mm,105.782mm) on Top Layer And Region (0 hole(s)) Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:52:13 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.127mm) Between Pad U5-2(64.334mm,105.781mm) on Top Layer And Region (0 hole(s)) Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:45:52 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.127mm) Between Pad U5-3(64.334mm,104.701mm) on Top Layer And Region (0 hole(s)) Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:46:22 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.127mm) Between Pad U5-4(64.984mm,104.701mm) on Top Layer And Region (0 hole(s)) Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:52:42 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (59.221mm,107.409mm)(59.221mm,108.206mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:51:50 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (59.221mm,109.286mm)(59.221mm,109.751mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:51:33 PM
+   Waived Violation between Clearance Constraint: (0.228mm < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (59.221mm,109.751mm)(59.37mm,109.9mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:51:35 PM
+   Waived Violation between Clearance Constraint: (0.228mm < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (59.722mm,109.9mm)(59.871mm,109.751mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:51:20 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (59.871mm,109.286mm)(59.871mm,109.751mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:51:21 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (63.145mm,106.792mm)(64.659mm,105.279mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:45:39 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (64.334mm,104.266mm)(64.334mm,104.701mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:46:19 PM
+   Waived Violation between Clearance Constraint: (0.198mm < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (64.334mm,104.266mm)(64.5mm,104.1mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:46:18 PM
+   Waived Violation between Clearance Constraint: (0.181mm < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (64.8mm,104.1mm)(64.984mm,104.284mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:52:46 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (64.983mm,105.782mm)(64.983mm,106.31mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:52:14 PM
+   Waived Violation between Clearance Constraint: (Collision < 0.254mm) Between Region (0 hole(s)) Top Layer And Track (64.984mm,104.284mm)(64.984mm,104.701mm) on Top Layer Waived by Glenn Adriaensens at 4/21/2021 4:52:43 PM
+Waived Violations :18
+
+Waived Violations Of Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+   Waived Violation between Short-Circuit Constraint: Between Pad U4-1(59.221mm,108.206mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 59.221mm][Y = 108.206mm]Waived by Glenn Adriaensens at 4/21/2021 4:51:52 PM
+   Waived Violation between Short-Circuit Constraint: Between Pad U4-3(59.871mm,109.286mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 59.871mm][Y = 109.286mm]Waived by Glenn Adriaensens at 4/21/2021 4:51:23 PM
+   Waived Violation between Short-Circuit Constraint: Between Pad U4-4(59.221mm,109.286mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 59.221mm][Y = 109.286mm]Waived by Glenn Adriaensens at 4/21/2021 4:51:37 PM
+   Waived Violation between Short-Circuit Constraint: Between Pad U5-1(64.983mm,105.782mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 64.983mm][Y = 105.782mm]Waived by Glenn Adriaensens at 4/21/2021 4:52:16 PM
+   Waived Violation between Short-Circuit Constraint: Between Pad U5-2(64.334mm,105.781mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 64.334mm][Y = 105.781mm]Waived by Glenn Adriaensens at 4/21/2021 4:45:54 PM
+   Waived Violation between Short-Circuit Constraint: Between Pad U5-3(64.334mm,104.701mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 64.334mm][Y = 104.701mm]Waived by Glenn Adriaensens at 4/21/2021 4:46:24 PM
+   Waived Violation between Short-Circuit Constraint: Between Pad U5-4(64.984mm,104.701mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 64.984mm][Y = 104.701mm]Waived by Glenn Adriaensens at 4/21/2021 4:52:47 PM
+   Waived Violation between Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (59.221mm,107.409mm)(59.221mm,108.206mm) on Top Layer Location : [X = 59.221mm][Y = 108.183mm]Waived by Glenn Adriaensens at 4/21/2021 4:51:53 PM
+   Waived Violation between Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (59.221mm,109.286mm)(59.221mm,109.751mm) on Top Layer Location : [X = 59.221mm][Y = 109.276mm]Waived by Glenn Adriaensens at 4/21/2021 4:51:38 PM
+   Waived Violation between Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (59.871mm,109.286mm)(59.871mm,109.751mm) on Top Layer Location : [X = 59.871mm][Y = 109.276mm]Waived by Glenn Adriaensens at 4/21/2021 4:51:24 PM
+   Waived Violation between Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (63.145mm,106.792mm)(64.659mm,105.279mm) on Top Layer Location : [X = 64.331mm][Y = 105.691mm]Waived by Glenn Adriaensens at 4/21/2021 4:45:50 PM
+   Waived Violation between Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (64.334mm,104.266mm)(64.334mm,104.701mm) on Top Layer Location : [X = 64.334mm][Y = 104.711mm]Waived by Glenn Adriaensens at 4/21/2021 4:46:20 PM
+   Waived Violation between Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (64.983mm,105.782mm)(64.983mm,106.31mm) on Top Layer Location : [X = 64.983mm][Y = 105.804mm]Waived by Glenn Adriaensens at 4/21/2021 4:52:19 PM
+   Waived Violation between Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (64.984mm,104.284mm)(64.984mm,104.701mm) on Top Layer Location : [X = 64.984mm][Y = 104.711mm]Waived by Glenn Adriaensens at 4/21/2021 4:52:48 PM
+Waived Violations :14
+
+
+Violations Detected : 0
+Waived Violations : 32
+Time Elapsed        : 00:00:02

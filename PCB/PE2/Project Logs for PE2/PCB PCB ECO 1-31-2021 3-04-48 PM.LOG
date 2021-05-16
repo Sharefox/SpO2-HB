@@ -1,0 +1,5 @@
+Change Component Footprint: Designator=Q1 Old Footprint=TO-220AB New Footprint=DPAK254P1524X483-3N
+Added Member To Class: ClassName=U_IO Member=Component R12 4K7
+Added Member To Class: ClassName=U_IO Member=Component R13 4K7
+Added Member To Class: ClassName=U_IO Member=Component R14 4K7
+Added Member To Class: ClassName=U_IO Member=Component R15 10K

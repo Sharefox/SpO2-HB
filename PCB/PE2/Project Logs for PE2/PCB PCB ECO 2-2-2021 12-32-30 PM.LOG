@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=GND Pin=Y1-2
+Removed Pin From Net: NetName=OSC32_OUT Pin=Y1-3
+Removed Pin From Net: NetName=GND Pin=Y1-4
+Change Component Footprint: Designator=Y1 Old Footprint=Y_3225 New Footprint=ECX-31B
+Added Pin To Net: NetName=OSC32_OUT Pin=Y1-2

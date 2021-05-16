@@ -1,0 +1,5 @@
+Removed Member From Class: ClassName=U_STM32WB55 Member=S3
+Change Component Footprint: Designator=C3 Old Footprint=C_0603 New Footprint=C_0805
+Change Component Footprint: Designator=C4 Old Footprint=C_0603 New Footprint=C_0805
+Change Component Footprint: Designator=C39 Old Footprint=C_0603 New Footprint=C_0805
+Added Member To Class: ClassName=U_STM32WB55 Member=Component S2 BOOT

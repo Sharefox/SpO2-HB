@@ -1,0 +1,457 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">4/21/2021</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">5:02:35 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc" class="file"><acronym title="C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc">C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Waived Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">32</td></tr>
+</table>
+</td>
+</table><a name="IDBRUFAKBGSM03IFP4FRYHIH0T5FSBELCUDVLVN5B5L53AGAMH3DYP"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAFIZK50DZPCHNXRGPSCZKDSI4CU15TTQK2FCPBPU4IEYPACFSTFP">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDWGTU2FRI40IMFOODIQY4P4J5ILYYIHV0R5K3TIEQOTJ3AICRECIG">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3F5EXJSRADX1L2R4IE3ZXKG4BFCVK000OQUIT3FE2MJWCAW1RC4M">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPO3AP45K0FQQNQNFSOU45UDVOHD13N12XEV3N5KKA4KM2E5OFMZL">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYCAFMQOKMUDFNUNSDHVMVKG3HBCZ3K34EU4Z3JKUCPHCSID4J1WH">Width Constraint (Min=0.127mm) (Max=2mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDW2DODZGUWAGXBL3VGC3O0AK4GH1MHCB3PAO5EQCYBE5PIIXYEZDJ">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.127mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJBK0J5FO4UW2441GJVQ30C5UNYPGXTAREVYR1HBBENRINZY3SDD">Hole Size Constraint (Min=0.2mm) (Max=6.3mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDR1JJW2JHEHRDG2SHCZPZCKTMNVYM5OIA3AIVYOTE4UZ4V0I2PSM">Hole To Hole Clearance (Gap=0.5mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0K1BJC531KKLEOQNOOO14GL3LTADEA4PFLKUGPGS2I2HIODXUDL">Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEXIJA3BUUB4FJKF3GTYFEZOPDLW3JYOFIG3YQKFEL12DZA51A1EJ">Silk To Solder Mask (Clearance=0.02mm) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSGWV3YCT4P4UM5EOGYYILZOQPI4FRIMUTPQ5VFOYULYEMPK2IGEL">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4CMSO4KVGVEHDRYGLSPMGBGZKNTEDIGHNJKOSLJP34XRLZZKOASM">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYEHKLOCL0RONKNZIZ2XEBBV3NFFNHFOUJFJGWLPP3DXETZ4QA3Y">Room U_Power (Bounding Region = (26.924mm, 100.33mm, 73.025mm, 127mm) (InComponentClass('U_Power'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZKUVN1IUR0I5KOOQOBLYGSCPPMHPL104QEJF4BNCB1SRBJ10UCKI">Room U_IO (Bounding Region = (27.686mm, 102.235mm, 74.295mm, 119.634mm) (InComponentClass('U_IO'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWUJ0C1F1IQJNPLJQ50YN0CJ4JDKAE03ZSG4IHILCLE5UAHNRJ5HP">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Waived Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJQJAHAYAQXGYLT1NEWO3XTG51VIXXNL250KEMPW1JUEQVJUV3EK">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">18</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHHASU03KDC4NMN1440SS10VOUB5CVF2VZJB2VJD1KDBHUPNC1EXE">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">14</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">32</td>
+</tr>
+</table><br><a name="IDZZILICHBE4PIB2JJZUUGLUL3SD4OTVW43J1IYJPGQUZ5NDX5ME4"><h2>Rule Violations</h2></a><a name="IDYQEHAMNCAKMEKKMTR153H2R2HOITKD3FGDWWYDEUCOQLGKSZHR4F"><h2>Waived Violations</h2></a><a name="IDJQJAHAYAQXGYLT1NEWO3XTG51VIXXNL250KEMPW1JUEQVJUV3EK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="waived">Clearance Constraint (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2.755mil|Location2.X=7.088mil|Location1.Y=2.164mil|Location2.Y=6.497mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2.755mil|Location2.X=7.088mil|Location1.Y=2.164mil|Location2.Y=6.497mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.127mm) Between Pad U4-1(59.221mm,108.206mm) on Top Layer And Region (0 hole(s)) Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:49 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2350.028mil|Location2.X=2354.362mil|Location1.Y=4304.753mil|Location2.Y=4309.086mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2350.028mil|Location2.X=2354.362mil|Location1.Y=4304.753mil|Location2.Y=4309.086mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.127mm) Between Pad U4-3(59.871mm,109.286mm) on Top Layer And Region (0 hole(s)) Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:18 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2324.438mil|Location2.X=2328.771mil|Location1.Y=4304.753mil|Location2.Y=4309.086mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2324.438mil|Location2.X=2328.771mil|Location1.Y=4304.753mil|Location2.Y=4309.086mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.127mm) Between Pad U4-4(59.221mm,109.286mm) on Top Layer And Region (0 hole(s)) Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:31 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2.755mil|Location2.X=7.088mil|Location1.Y=2.164mil|Location2.Y=6.497mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2.755mil|Location2.X=7.088mil|Location1.Y=2.164mil|Location2.Y=6.497mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.127mm) Between Pad U5-1(64.983mm,105.782mm) on Top Layer And Region (0 hole(s)) Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:52:13 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2525.727mil|Location2.X=2530.06mil|Location1.Y=4166.782mil|Location2.Y=4171.115mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2525.727mil|Location2.X=2530.06mil|Location1.Y=4166.782mil|Location2.Y=4171.115mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.127mm) Between Pad U5-2(64.334mm,105.781mm) on Top Layer And Region (0 hole(s)) Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:45:52 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2535.57mil|Location2.X=2539.903mil|Location1.Y=4115.609mil|Location2.Y=4119.942mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2535.57mil|Location2.X=2539.903mil|Location1.Y=4115.609mil|Location2.Y=4119.942mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.127mm) Between Pad U5-3(64.334mm,104.701mm) on Top Layer And Region (0 hole(s)) Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:46:22 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2561.16mil|Location2.X=2565.493mil|Location1.Y=4115.609mil|Location2.Y=4119.942mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2561.16mil|Location2.X=2565.493mil|Location1.Y=4115.609mil|Location2.Y=4119.942mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.127mm) Between Pad U5-4(64.984mm,104.701mm) on Top Layer And Region (0 hole(s)) Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:52:42 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2327.702mil|Location2.X=2335.368mil|Location1.Y=4251.897mil|Location2.Y=4259.563mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2327.702mil|Location2.X=2335.368mil|Location1.Y=4251.897mil|Location2.Y=4259.563mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (59.221mm,107.409mm)(59.221mm,108.206mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:50 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2327.693mil|Location2.X=2335.359mil|Location1.Y=4298.763mil|Location2.Y=4306.43mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2327.693mil|Location2.X=2335.359mil|Location1.Y=4298.763mil|Location2.Y=4306.43mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (59.221mm,109.286mm)(59.221mm,109.751mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:33 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2325.901mil|Location2.X=2337.151mil|Location1.Y=4305.792mil|Location2.Y=4317.042mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2325.901mil|Location2.X=2337.151mil|Location1.Y=4305.792mil|Location2.Y=4317.042mil|Absolute=True">Clearance Constraint: (0.228mm &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (59.221mm,109.751mm)(59.37mm,109.9mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:35 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2351.491mil|Location2.X=2362.741mil|Location1.Y=4305.792mil|Location2.Y=4317.042mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2351.491mil|Location2.X=2362.741mil|Location1.Y=4305.792mil|Location2.Y=4317.042mil|Absolute=True">Clearance Constraint: (0.228mm &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (59.722mm,109.9mm)(59.871mm,109.751mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:20 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2353.283mil|Location2.X=2360.95mil|Location1.Y=4298.763mil|Location2.Y=4306.43mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2353.283mil|Location2.X=2360.95mil|Location1.Y=4298.763mil|Location2.Y=4306.43mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (59.871mm,109.286mm)(59.871mm,109.751mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:21 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.061mil|Location2.X=2531.727mil|Location1.Y=4158.727mil|Location2.Y=4166.394mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.061mil|Location2.X=2531.727mil|Location1.Y=4158.727mil|Location2.Y=4166.394mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (63.145mm,106.792mm)(64.659mm,105.279mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:45:39 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.061mil|Location2.X=2531.727mil|Location1.Y=4113.942mil|Location2.Y=4121.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.061mil|Location2.X=2531.727mil|Location1.Y=4113.942mil|Location2.Y=4121.609mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (64.334mm,104.266mm)(64.334mm,104.701mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:46:19 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.19mil|Location2.X=2538.44mil|Location1.Y=4108.253mil|Location2.Y=4119.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2527.19mil|Location2.X=2538.44mil|Location1.Y=4108.253mil|Location2.Y=4119.503mil|Absolute=True">Clearance Constraint: (0.198mm &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (64.334mm,104.266mm)(64.5mm,104.1mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:46:18 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2552.781mil|Location2.X=2564.031mil|Location1.Y=4108.587mil|Location2.Y=4119.837mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2552.781mil|Location2.X=2564.031mil|Location1.Y=4108.587mil|Location2.Y=4119.837mil|Absolute=True">Clearance Constraint: (0.181mm &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (64.8mm,104.1mm)(64.984mm,104.284mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:52:46 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2554.563mil|Location2.X=2562.23mil|Location1.Y=4160.8mil|Location2.Y=4168.467mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2554.563mil|Location2.X=2562.23mil|Location1.Y=4160.8mil|Location2.Y=4168.467mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (64.983mm,105.782mm)(64.983mm,106.31mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:52:14 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2559.494mil|Location2.X=2567.16mil|Location1.Y=4113.942mil|Location2.Y=4121.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2559.494mil|Location2.X=2567.16mil|Location1.Y=4113.942mil|Location2.Y=4121.609mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Region (0 hole(s)) Top Layer And Track (64.984mm,104.284mm)(64.984mm,104.701mm) on Top Layer </acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:52:43 PM</td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDHHASU03KDC4NMN1440SS10VOUB5CVF2VZJB2VJD1KDBHUPNC1EXE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="waived">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2323.48mil|Location2.X=2339.59mil|Location1.Y=4252.005mil|Location2.Y=4268.116mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2323.48mil|Location2.X=2339.59mil|Location1.Y=4252.005mil|Location2.Y=4268.116mil|Absolute=True">Short-Circuit Constraint: Between Pad U4-1(59.221mm,108.206mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 59.221mm][Y = 108.206mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:52 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2349.064mil|Location2.X=2365.169mil|Location1.Y=4294.54mil|Location2.Y=4310.645mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2349.064mil|Location2.X=2365.169mil|Location1.Y=4294.54mil|Location2.Y=4310.645mil|Absolute=True">Short-Circuit Constraint: Between Pad U4-3(59.871mm,109.286mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 59.871mm][Y = 109.286mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:23 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2323.473mil|Location2.X=2339.578mil|Location1.Y=4294.54mil|Location2.Y=4310.645mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2323.473mil|Location2.X=2339.578mil|Location1.Y=4294.54mil|Location2.Y=4310.645mil|Absolute=True">Short-Circuit Constraint: Between Pad U4-4(59.221mm,109.286mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 59.221mm][Y = 109.286mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:37 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2550.341mil|Location2.X=2566.452mil|Location1.Y=4156.578mil|Location2.Y=4172.689mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2550.341mil|Location2.X=2566.452mil|Location1.Y=4156.578mil|Location2.Y=4172.689mil|Absolute=True">Short-Circuit Constraint: Between Pad U5-1(64.983mm,105.782mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 64.983mm][Y = 105.782mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:52:16 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.76mil|Location2.X=2540.87mil|Location1.Y=4156.562mil|Location2.Y=4172.673mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.76mil|Location2.X=2540.87mil|Location1.Y=4156.562mil|Location2.Y=4172.673mil|Absolute=True">Short-Circuit Constraint: Between Pad U5-2(64.334mm,105.781mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 64.334mm][Y = 105.781mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:45:54 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.762mil|Location2.X=2540.868mil|Location1.Y=4114.049mil|Location2.Y=4130.155mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.762mil|Location2.X=2540.868mil|Location1.Y=4114.049mil|Location2.Y=4130.155mil|Absolute=True">Short-Circuit Constraint: Between Pad U5-3(64.334mm,104.701mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 64.334mm][Y = 104.701mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:46:24 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2550.353mil|Location2.X=2566.458mil|Location1.Y=4114.049mil|Location2.Y=4130.155mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2550.353mil|Location2.X=2566.458mil|Location1.Y=4114.049mil|Location2.Y=4130.155mil|Absolute=True">Short-Circuit Constraint: Between Pad U5-4(64.984mm,104.701mm) on Top Layer And Region (0 hole(s)) Top Layer Location : [X = 64.984mm][Y = 104.701mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:52:47 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2325.754mil|Location2.X=2337.316mil|Location1.Y=4253.389mil|Location2.Y=4264.951mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2325.754mil|Location2.X=2337.316mil|Location1.Y=4253.389mil|Location2.Y=4264.951mil|Absolute=True">Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (59.221mm,107.409mm)(59.221mm,108.206mm) on Top Layer Location : [X = 59.221mm][Y = 108.183mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:53 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2323.213mil|Location2.X=2339.838mil|Location1.Y=4293.897mil|Location2.Y=4310.521mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2323.213mil|Location2.X=2339.838mil|Location1.Y=4293.897mil|Location2.Y=4310.521mil|Absolute=True">Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (59.221mm,109.286mm)(59.221mm,109.751mm) on Top Layer Location : [X = 59.221mm][Y = 109.276mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:38 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2348.804mil|Location2.X=2365.428mil|Location1.Y=4293.897mil|Location2.Y=4310.521mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2348.804mil|Location2.X=2365.428mil|Location1.Y=4293.897mil|Location2.Y=4310.521mil|Absolute=True">Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (59.871mm,109.286mm)(59.871mm,109.751mm) on Top Layer Location : [X = 59.871mm][Y = 109.276mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:51:24 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2521.987mil|Location2.X=2543.463mil|Location1.Y=4150.336mil|Location2.Y=4171.812mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2521.987mil|Location2.X=2543.463mil|Location1.Y=4150.336mil|Location2.Y=4171.812mil|Absolute=True">Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (63.145mm,106.792mm)(64.659mm,105.279mm) on Top Layer Location : [X = 64.331mm][Y = 105.691mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:45:50 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.503mil|Location2.X=2541.127mil|Location1.Y=4114.173mil|Location2.Y=4130.798mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2524.503mil|Location2.X=2541.127mil|Location1.Y=4114.173mil|Location2.Y=4130.798mil|Absolute=True">Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (64.334mm,104.266mm)(64.334mm,104.701mm) on Top Layer Location : [X = 64.334mm][Y = 104.711mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:46:20 PM</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2552.615mil|Location2.X=2564.178mil|Location1.Y=4159.743mil|Location2.Y=4171.306mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2552.615mil|Location2.X=2564.178mil|Location1.Y=4159.743mil|Location2.Y=4171.306mil|Absolute=True">Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (64.983mm,105.782mm)(64.983mm,106.31mm) on Top Layer Location : [X = 64.983mm][Y = 105.804mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:52:19 PM</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2550.093mil|Location2.X=2566.718mil|Location1.Y=4114.174mil|Location2.Y=4130.798mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\PE2\HalfPCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2550.093mil|Location2.X=2566.718mil|Location1.Y=4114.174mil|Location2.Y=4130.798mil|Absolute=True">Short-Circuit Constraint: Between Region (0 hole(s)) Top Layer And Track (64.984mm,104.284mm)(64.984mm,104.701mm) on Top Layer Location : [X = 64.984mm][Y = 104.711mm]</acronym></a><br>Waived by Glenn Adriaensens at 4/21/2021 4:52:48 PM</td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

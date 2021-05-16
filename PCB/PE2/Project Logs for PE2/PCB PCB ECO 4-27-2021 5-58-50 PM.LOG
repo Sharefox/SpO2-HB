@@ -1,0 +1,24 @@
+Removed Member From Class: ClassName=U_Power Member=D4
+Removed Member From Class: ClassName=U_Power Member=R15
+Removed Member From Class: ClassName=U_Power Member=R20
+Removed Member From Class: ClassName=U_Power Member=R21
+Removed Member From Class: ClassName=U_STM32WB55 Member=R22
+Change Net Name : Old Net Name=NetC34_1 New Net Name=NRESET
+Change Net Name : Old Net Name=NetR15_2 New Net Name=BOOT0
+Added Member To Class: ClassName=U_STM32WB55 Member=Component C33 4.7uF
+Added Member To Class: ClassName=U_STM32WB55 Member=Component C34 100nF
+Added Member To Class: ClassName=U_Power Member=Component D1 RED
+Added Member To Class: ClassName=U_Power Member=Component R1 68R
+Added Member To Class: ClassName=U_Power Member=Component R3 10K
+Added Member To Class: ClassName=U_Power Member=Component R5 10K
+Added Member To Class: ClassName=U_Power Member=Component R6 1K2
+Added Member To Class: ClassName=U_Power Member=Component R7 3K
+Added Member To Class: ClassName=U_Power Member=Component R8 10K
+Added Member To Class: ClassName=U_Power Member=Component R9 10K
+Added Member To Class: ClassName=U_Power Member=Component R11 10K
+Added Member To Class: ClassName=U_Power Member=Component R12 10K
+Added Member To Class: ClassName=U_Power Member=Component R13 10K
+Added Member To Class: ClassName=U_STM32WB55 Member=Component R14 10K
+Added Member To Class: ClassName=U_IO Member=Component R16 4K7
+Added Member To Class: ClassName=U_IO Member=Component R17 4K7
+Added Member To Class: ClassName=U_IO Member=Component R18 4K7
